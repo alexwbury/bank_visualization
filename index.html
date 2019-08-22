@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Wells Fargo Banking | LoA Visualization</title>
+    <style>
+      body{
+        background: url(wfBase.png);
+        background-repeat: no-repeat;
+        background-size: 100vw 100vh;
+      }
+      form{
+        background-color: #fff;
+        padding: 10vh;
+        margin: auto;
+        width: 50vw;
+      }
+      .darkBkg{
+        width: 98vw;
+        height: 97.5vh;
+        background: rgba(0, 0, 0, 0.5);
+        margin:auto;
+      }
+      #name{
+        color: #FFF;
+        position: fixed;
+        top: 4vh;
+        left: 73.5vw;
+        font-family: Arial, sans;
+        font-size: 0.8vw;
+      }
+      #balance{
+        color: #636363;
+        width: 30vw;
+        position: fixed;
+        top: 23vh;
+        left: 30vw;
+        font-family: Arial, sans;
+        font-size: 1.3vw;
+        font-weight: 600;
+        text-align: right;
+      }
+    </style>
+    <script type="text/javascript">
+      var userName = "Firstname";
+      var startAmount = 0;
+      var bankImg = "";
+      var amountHolder = 0;
+      var currentAmount = 0;
+      function handleIt(){
+        userName = document.getElementById("firstname").value;
+        startAmount = document.getElementById("amount").value;
+        amountHolder = parseInt(startAmount, 10);
+        bankImg = "<div id='name'>"+userName.toUpperCase()+"</div>" + "<div id='balance'>$<span id='amount'>"+startAmount+"</span></div>";
+        document.body.innerHTML = bankImg;
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="darkBkg">
+      <form action="#">
+        First Name:<br>
+        <input type="text" name="firstname" id="firstname"><br>
+        Starting Amount (no commas):<br>
+        <input type="text" name="amount" id="amount"><br>
+        <input type="button" onclick="handleIt();" value="Submit">
+        <p>
+          None of this information is saved or sent anywhere, it just replaces the data on screen. If you'd like to change something, simply refresh the page and begin again!
+        </p>
+      </form>
+
+    </div>
+
+  <script>
+  var myVar = setInterval(myTimer, 10000); //1000 is 1 second
+  var profit = [0,0, 4, 8, 10, 0,0, 24, 120, 0,0, 8, 4, 0,0];
+  function myTimer() {
+    var arrayPosition= profit[Math.floor(profit.length * Math.random())];
+    amountHolder= amountHolder+arrayPosition;
+    //currentAmount = amountHolder.toFixed(2);
+    //currentAmount.replace(/(\d)(?=(\d{3})+(?!\d))/g, "$1,");
+    currentAmount = amountHolder.toLocaleString('en')+".86";
+    document.getElementById("amount").innerHTML = currentAmount;
+  }
+  </script>
+
+  </body>
+</html>
